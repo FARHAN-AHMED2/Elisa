@@ -5,7 +5,7 @@ module.exports = {
 		name: "join",
 		aliases: [],
 		version: "1.0",
-		author: "Farhan",
+		author: "",
 		countDown: 5,
 		role: 2,
 		shortDescription: "Join bot gc",
