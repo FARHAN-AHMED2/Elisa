@@ -33,14 +33,14 @@ module.exports = {
   },
 
   sendInfo: async function (message) {
-    const botName = "✰→ ғᴀʀʜᴀɴ ʙᴏᴛ ←✰";
+    const botName = " ✰→ ғᴀʀʜᴀɴ ʙᴏᴛ ←✰ ";
     const botPrefix = "!";
-    const authorName = "Fʌʀʜʌŋ Aʜɱɘɗ-004";
+    const authorName = "Fʌʀʜʌŋ Aʜɱɘɗ ";
     const authorFB = "https://www.facebook.com/farhan.ahmed2401";
-    const authorInsta = "NONE";
+    const authorInsta = "FARHAN_AHMED424";
     const status = "𝗣𝘂𝗿𝗲 𝗦𝗶𝗻𝗴𝗹𝗲";
 
-    const urls = JSON.parse(fs.readFileSync('scripts/cmds/assets/Adnan.json'));
+    const urls = JSON.parse(fs.readFileSync('scripts/cmds/assets/Ayan.json'));
     const link = urls[Math.floor(Math.random() * urls.length)];
 
     const now = moment().tz('Asia/Dhaka');
@@ -55,32 +55,18 @@ module.exports = {
     const uptimeString = `${hours}h ${minutes}m ${seconds}sec`;
 
     message.reply({
-      body: `
-≡≡║Bot & Owner Info║≡≡
-﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
-
-♕︎ Bot Name↠ ${botName}
-
-♕︎ Bot Prefix↠ ${botPrefix}
-
-♕︎ Owner Name↠ ${authorName}
-
-♕︎ Facebook↠ ${authorFB}
-
-♕︎ Instagram↠ ${authorInsta}
-
-♕︎ Status↠ ${status}
-
-♕︎ Date↠ ${date}
-
-♕︎ Time↠ ${time}
-
-♕︎ Uptime↠ ${uptimeString}
-
-﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋
-Thanks for using ↠ \➪${botName}
-﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏`,
-      attachment: await global.utils.getStreamFromURL(https://i.imgur.com/tRLZs7y.mp4)
+      body: `╭────────────◊
+├‣ 𝐁𝐨𝐭 & 𝐎𝐰𝐧𝐞𝐫 𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧 
+├‣ 𝐍𝐚𝐦𝐞: ${authorName}
+├‣ 𝐁𝐨𝐭 𝐍𝐚𝐦𝐞:  ${botName}
+├‣ 𝐏𝐫𝐞𝐟𝐢𝐱:  ${botPrefix}
+├‣ 𝐅𝐛: ${authorFB}
+├‣ 𝐈𝐧𝐬𝐭𝐚𝐠𝐫𝐚𝐦:  ${authorInsta}
+├‣ 𝐑𝐞𝐥𝐚𝐭𝐢𝐨𝐧𝐬𝐡𝐢𝐩: ${status}   
+├‣ 𝐓𝐢𝐦𝐞:  ${time}
+├‣ 𝐔𝐩𝐭𝐢𝐦𝐞: ${uptimeString}
+╰────────────◊`,
+      attachment: await global.utils.getStreamFromURL(https://i.imgur.com/mc0e38c.mp4)
     });
   }
 };
