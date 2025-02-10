@@ -1,5 +1,10 @@
-const { config } = global.GoatBot;module.exports = {	config: {
-		name: "w",
+const { config } = global.GoatBot;
+
+module.exports = {
+
+	config: {
+
+		name: "wl",
 
 		version: "1.0",
 
@@ -50,9 +55,9 @@ const { config } = global.GoatBot;module.exports = {	config: {
 
 			listAdmin: "👑 | List of whiteListIds:\n%1",
 
-      enable: "𝑻𝒖𝒓𝒏𝒆𝒅 𝒐𝒏 𝒃𝒃𝒚 ..🥹",
+      enable: "✅ Turned on",
 
-      disable: "𝑻𝒖𝒓𝒏𝒆𝒅 𝒐𝒇𝒇 𝒃𝒃𝒚..🥹"
+      disable: "✅ Turned off"
 
 		}
 
