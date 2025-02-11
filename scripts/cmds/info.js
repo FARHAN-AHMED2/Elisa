@@ -66,7 +66,7 @@ module.exports = {
 ├‣ 𝐓𝐢𝐦𝐞:  ${time}
 ├‣ 𝐔𝐩𝐭𝐢𝐦𝐞: ${uptimeString}
 ╰────────────◊`,
-      attachment: await global.utils.getStreamFromURL(https://i.imgur.com/mc0e38c.mp4)
+      attachment: await global.utils.getStreamFromURL(link)
     });
   }
 };
