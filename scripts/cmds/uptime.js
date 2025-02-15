@@ -23,7 +23,7 @@ module.exports = {
     },
 
     onStart: async function ({ message, event, args, api, usersData, threadsData }) {
-        const iURL = "https://i.imgur.com/TyBJ4II.jpeg"; // Fixed photo link
+        const iURL = "https://i.imgur.com/Gy2eUan.jpeg"; // Fixed photo link
         const uptime = process.uptime();
         const s = Math.floor(uptime % 60);
         const m = Math.floor((uptime / 60) % 60);
