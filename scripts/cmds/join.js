@@ -3,9 +3,9 @@ const chalk = require('chalk');
 module.exports = {
 	config: {
 		name: "join",
-		aliases: [],
+		aliases: ["join"],
 		version: "1.0",
-		author: "",
+		author: "farhan",
 		countDown: 5,
 		role: 2,
 		shortDescription: "Join bot gc",
