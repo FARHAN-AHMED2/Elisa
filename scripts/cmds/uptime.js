@@ -1,7 +1,7 @@
 module.exports = {
   config: {
-    name: "runtime",
-    aliases: ["run", "rt"],
+    name: "uptime",
+    aliases: ["up", "rtm"],
     version: "1.0",
     author: "BaYjid", // Author is fixed as "BaYjid"
     role: 0,
