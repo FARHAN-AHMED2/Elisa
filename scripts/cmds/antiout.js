@@ -1,22 +1,48 @@
-module.exports.config = {
- name: "antiout",
- eventType: ["log:unsubscribe"],
- version: "0.0.1",
- credits: "Nayan",
- description: "Listen events"
-};
+module.exports = {
+  config: {
+    name: "antiout",
+    version: "1.0",
+    author: "AceGun",
+    countDown: 5,
+    role: 0,
+    shortDescription: "Enable or disable antiout",
+    longDescription: "",
+    category: "boxchat",
+    guide: "{pn} {{[on | off]}}",
+    envConfig: {
+      deltaNext: 5
+    }
+  },
+  onStart: async function({ message, event, threadsData, args }) {
+    let antiout = await threadsData.get(event.threadID, "settings.antiout");
+    if (antiout === undefined) {
+      await threadsData.set(event.threadID, true, "settings.antiout");
+      antiout = true;
+    }
+    if (!["on", "off"].includes(args[0])) {
+      return message.reply("Please use 'on' or 'off' as an argument");
+    }
+    await threadsData.set(event.threadID, args[0] === "on", "settings.antiout");
+    return message.reply(`Antiout has been ${args[0] === "on" ? "enabled" : "disabled"}.`);
+  },
+  onEvent: async function({ api, event, threadsData }) {
+    const antiout = await threadsData.get(event.threadID, "settings.antiout");
+    if (antiout && event.logMessageData && event.logMessageData.leftParticipantFbId) {
+      // A user has left the chat, get their user ID
+      const userId = event.logMessageData.leftParticipantFbId;
 
-module.exports.run = async({ event, api, Threads, Users }) => {
- let data = (await Threads.getData(event.threadID)).data || {};
- if (data.antiout == false) return;
- if (event.logMessageData.leftParticipantFbId == api.getCurrentUserID()) return;
- const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
- const type = (event.author == event.logMessageData.leftParticipantFbId) ? "self-separation" : "being kicked by the administrator na pasikat";
- if (type == "self-separation") {
-  api.addUserToGroup(event.logMessageData.leftParticipantFbId, event.threadID, (error, info) => {
-   if (error) {
-    api.sendMessage(`Unable to re-add members ${name} to the group\n\n${name} blocked me or There is no Message option in the profile `, event.threadID)
-   } else api.sendMessage(`${name} আমাকে একা রেখে চলে গিয়েছিলে_// তাই তোমাকে আবার এড করলাম জানু 🤧💋 `, event.threadID);
-  })
- }
-}
+      // Check if the user is still in the chat
+      const threadInfo = await api.getThreadInfo(event.threadID);
+      const userIndex = threadInfo.participantIDs.indexOf(userId);
+      if (userIndex === -1) {
+        // The user is not in the chat, add them back
+        const addUser = await api.addUserToGroup(userId, event.threadID);
+        if (addUser) {
+          console.log(`User ${userId} আমাকে একা রেখে চলে গিয়েছিলে_// তাই তোমাকে আবার এড করলাম জানু 🤧💋.`);
+        } else {
+          console.log(`Failed to add user ${userId} back to the group chat.`);
+        }
+      }
+    }
+  }
+};
